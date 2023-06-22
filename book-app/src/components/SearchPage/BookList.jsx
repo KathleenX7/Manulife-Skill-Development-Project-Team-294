@@ -1,7 +1,10 @@
-import Book from "./BookList/Book";
+import {useState} from "react";
+import Book from "./Book";
 
 const BookList = () => {
-
+    return (
+        <Book/>
+    )
 };
 
-export default Booklist;
+export default BookList;

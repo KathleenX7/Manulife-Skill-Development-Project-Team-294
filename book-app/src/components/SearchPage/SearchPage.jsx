@@ -1,8 +1,12 @@
 import SearchBar from "./SearchBar";
-import Booklist from "./BookList";
+import BookList from "./BookList";
 
 function SearchPage() {
-
+    return(
+        <div>
+            <SearchBar/>
+        </div>
+    )
 };
 
 export default SearchPage;
