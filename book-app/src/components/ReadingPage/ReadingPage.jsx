@@ -1,4 +1,4 @@
-import ReadingList from "./ReadingPage/ReadingList";
+import ReadingList from "./ReadingList";
 
 function ReadingPage() {
 

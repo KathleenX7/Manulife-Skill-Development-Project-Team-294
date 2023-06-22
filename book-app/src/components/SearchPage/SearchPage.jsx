@@ -1,5 +1,5 @@
-import SearchBar from "./SearchPage/SearchBar";
-import Booklist from "./SearchPage/BookList";
+import SearchBar from "./SearchBar";
+import Booklist from "./BookList";
 
 function SearchPage() {
 
