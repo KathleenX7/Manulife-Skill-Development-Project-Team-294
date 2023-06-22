@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   /* margin: 0 auto; */
   padding: 2rem;
   text-align: left;
+  
 }
 
 .logo {
@@ -48,16 +49,29 @@
 }
 
 img{
-  max-height:15rem;
-  width: 10rem;
+  max-height:20rem;
+  width: 25%;
   margin: 1rem;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .divBook {
-  width: 40%;
+  width: 45%;
+  display: inline-block;
 }
 
 .subDivBook {
   display: inline-block;
   vertical-align: middle;
+  width: 70%;
+}
+.inlineBlock{
+  display: inline-block;
+}
+.leftAlign{
+  float: left;
+}
+.rightAlign{
+  float: right;
 }

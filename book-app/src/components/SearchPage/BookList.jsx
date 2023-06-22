@@ -3,7 +3,11 @@ import Book from "./Book";
 
 const BookList = () => {
     return (
-        <Book/>
+        <div>
+            <Book />
+            <Book />
+            <Book />
+        </div>
     )
 };
 
