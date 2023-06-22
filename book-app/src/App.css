@@ -1,8 +1,8 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 2rem;
-  text-align: center;
+  text-align: left;
 }
 
 .logo {
@@ -39,4 +39,25 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.searchInput {
+  border: white .2rem solid;
+  min-height: 1.6rem;
+  margin-right: 2rem;
+}
+
+img{
+  max-height:15rem;
+  width: 10rem;
+  margin: 1rem;
+}
+
+.divBook {
+  width: 40%;
+}
+
+.subDivBook {
+  display: inline-block;
+  vertical-align: middle;
 }

@@ -8,10 +8,10 @@ const SearchBar = () => {
     return (
         <div>
             <div>
-                <input type = "text" value = {author}></input>
-                <input type = "text" value = {title}></input>
-                <input type = "text" value = {description}></input>
-                <input type = "text" value = {year}></input>
+                <input className = "searchInput" type = "text" value = {author}></input>
+                <input className = "searchInput" type = "text" value = {title}></input>
+                <input className = "searchInput" type = "text" value = {description}></input>
+                <input className = "searchInput" type = "text" value = {year}></input>
                 <button> search </button>
             </div>
         </div>
