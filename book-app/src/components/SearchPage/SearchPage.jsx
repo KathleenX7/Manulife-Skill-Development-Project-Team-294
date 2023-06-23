@@ -6,6 +6,7 @@ function SearchPage() {
         <div>
             <h1>Insert Name of Project</h1>
             <SearchBar/>
+            <BookList/>
         </div>
     )
 };

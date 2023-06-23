@@ -1,9 +1,12 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import Book from "./Book";
 
 const BookList = () => {
+    
+
     return (
-        <div>
+        <div className = "bookListFlex">
+            <Book />
             <Book />
             <Book />
             <Book />

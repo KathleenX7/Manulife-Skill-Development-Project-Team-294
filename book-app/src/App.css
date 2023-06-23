@@ -49,25 +49,58 @@
 }
 
 img{
-  max-height:20rem;
-  width: 25%;
-  margin: 1rem;
-  display: inline-block;
-  vertical-align: middle;
+  height: 100%;
+  max-width: 90%;
+  vertical-align: top;
 }
 
 .divBook {
-  width: 45%;
-  display: inline-block;
+  flex: 1 1 50%;
+  display: flex;
+  border: solid .3rem #644536ff;
+  border-radius: 1rem;
+  margin: 1%;
+  padding: 1%;
+  background-color: #b2675eff;
+  align-items: center;
+  flex-wrap: wrap;
+  color: #1b1b1b;
+}
+.divBookGreen{
+  border-color: #a0c15d;
+  background-color: #d9dbbf;
+}
+.divBook button{
+  /* flex: 0; */
+  color: white;
+  flex: 1 0 100%;
+}
+.divBookLarger{
+  max-width: 45%;
 }
 
-.subDivBook {
-  display: inline-block;
-  vertical-align: middle;
-  width: 70%;
+.bookListFlex{
+  display: flex;
+  flex-wrap: wrap;
 }
-.inlineBlock{
-  display: inline-block;
+.subDivBook {
+  flex: 2;
+  vertical-align: top;
+  /* width: 60%; */
+}
+.subDivBookImg {
+  flex: 1;
+  vertical-align: top;
+  /* max-width: 38%; */
+  /* height: auto; */
+  margin: 1%;
+  /* width: 60%; */
+  object-fit: cover;
+}
+
+.newLine{
+  /* height: 10px; */
+  margin-bottom: 2rem;
 }
 .leftAlign{
   float: left;
