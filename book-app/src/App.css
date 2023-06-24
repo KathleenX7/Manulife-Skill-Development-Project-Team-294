@@ -57,19 +57,20 @@ img{
 .divBook {
   flex: 1 1 50%;
   display: flex;
-  border: solid .3rem #644536ff;
+  border: solid .3rem #b2675eff;
   border-radius: 1rem;
   margin: 1%;
   padding: 1%;
-  background-color: #b2675eff;
+  background-color: #e2c2beff;
   align-items: center;
   flex-wrap: wrap;
   color: #1b1b1b;
 }
 .divBookGreen{
   border-color: #a0c15d;
-  background-color: #d9dbbf;
+  background-color: #e0f3d5ff;
 }
+
 .divBook button{
   /* flex: 0; */
   color: white;
