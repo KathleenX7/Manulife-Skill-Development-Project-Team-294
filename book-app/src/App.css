@@ -43,7 +43,7 @@
 }
 
 .searchInput {
-  border: white .2rem solid;
+  border: rgb(255, 255, 255) .2rem solid;
   min-height: 1.6rem;
   margin-right: 2rem;
 }
@@ -73,7 +73,7 @@ img{
 
 .divBook button{
   /* flex: 0; */
-  color: white;
+  color: rgb(255, 255, 255);
   flex: 1 0 100%;
 }
 .divBookLarger{
