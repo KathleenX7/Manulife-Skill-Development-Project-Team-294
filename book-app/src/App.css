@@ -44,8 +44,10 @@
 
 .searchInput {
   border: rgb(255, 255, 255) .2rem solid;
+  border-radius: 8px;
   min-height: 1.6rem;
   margin-right: 2rem;
+  width:15%;
 }
 
 img{
@@ -66,7 +68,7 @@ img{
   flex-wrap: wrap;
   color: #1b1b1b;
 }
-.divBookGreen{
+.divBookPurple{
   border-color: #5d6092;
   background-color: #D1C8E1;
 }
@@ -75,7 +77,14 @@ img{
   /* flex: 0; */
   color: rgb(255, 255, 255);
   flex: 1 0 100%;
+  background-color: #b2675e;
 }
+
+.divBookPurple button{
+  background-color: #5d6092;
+}
+
+
 .divBookLarger{
   max-width: 45%;
 }
