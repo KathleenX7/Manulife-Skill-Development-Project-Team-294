@@ -7,7 +7,7 @@ const SearchBar = () => {
 
     return (
         <div>
-            <div>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <input className = "searchInput" style={{ textAlign: 'center'}} type = "text" placeholder="search by author" value = {author} ></input>
                 <input className = "searchInput" style={{ textAlign: 'center'}} type = "text" placeholder="search by title" value = {title}></input>
                 <input className = "searchInput" style={{ textAlign: 'center'}} type = "text" placeholder="search by description" value = {description}></input>

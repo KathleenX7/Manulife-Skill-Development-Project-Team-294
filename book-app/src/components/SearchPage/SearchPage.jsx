@@ -3,8 +3,8 @@ import BookList from "./BookList";
 
 function SearchPage() {
     return(
-        <div>
-            <h1>Insert Name of Project</h1>
+        <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '80px' }}>Bookpedia</p>
             <SearchBar/>
             <BookList/>
         </div>
