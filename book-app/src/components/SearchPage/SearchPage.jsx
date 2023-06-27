@@ -4,7 +4,7 @@ import BookList from "./BookList";
 function SearchPage() {
     return(
         <div style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: '80px' }}>Bookpedia</p>
+            <p style={{ fontSize: '88px' }}>Bookpedia</p>
             <SearchBar/>
             <BookList/>
         </div>

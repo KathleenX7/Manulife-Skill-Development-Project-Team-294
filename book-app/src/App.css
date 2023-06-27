@@ -13,7 +13,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #10189eaa);
+  filter: drop-shadow(0 0 2em #109e3baa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -43,7 +43,7 @@
 }
 
 .searchInput {
-  border: rgb(255, 255, 255) .2rem solid;
+  border: rgb(165, 193, 218) .2rem solid;
   min-height: 1.6rem;
   margin-right: 2rem;
 }
@@ -57,23 +57,23 @@ img{
 .divBook {
   flex: 1 1 50%;
   display: flex;
-  border: solid .3rem #b2675eff;
+  border: solid .3rem rgba(80, 9, 9, 0.832);
   border-radius: 1rem;
   margin: 1%;
   padding: 1%;
-  background-color: rgb(237, 203, 198);
+  background-color: rgb(223, 204, 204);
   align-items: center;
   flex-wrap: wrap;
   color: #1b1b1b;
 }
 .divBookGreen{
   border-color: #5d6092;
-  background-color: #D1C8E1;
+  background-color: #d4cae5;
 }
 
 .divBook button{
   /* flex: 0; */
-  color: rgb(255, 255, 255);
+  color: rgb(246, 246, 246);
   flex: 1 0 100%;
 }
 .divBookLarger{
