@@ -3,7 +3,12 @@ import Book from "./Book";
 
 const BookList = () => {
     return (
-        <Book/>
+        <div className = "bookListFlex">
+            <Book />
+            <Book />
+            <Book />
+            <Book />
+        </div>
     )
 };
 
