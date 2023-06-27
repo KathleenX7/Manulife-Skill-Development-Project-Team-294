@@ -7,7 +7,7 @@ const Book = () => {
     useEffect(() => {
         let x = Math.floor((Math.random() * 2) + 1);
         if(x == 1){
-            setClass("divBook divBookGreen");
+            setClass("divBook divBookPurple");
         }else{
             setClass("divBook");
         }
