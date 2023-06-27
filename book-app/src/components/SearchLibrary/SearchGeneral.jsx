@@ -5,7 +5,7 @@ const SearchGeneral = ( general ) => {
     const [count, setCount] = useState(0);
 
     useEffect(() => {
-    fetch(`https://openlibrary.org/search.json?q=${general}?key=4`)
+    fetch(`https://openlibrary.org/search.json?q=${general}?limit=4`)
         .then((response) => response.json)
         const bookkey = docs[0].key;
         setCount(count + 1);
