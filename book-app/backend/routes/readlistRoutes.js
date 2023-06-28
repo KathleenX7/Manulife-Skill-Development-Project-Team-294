@@ -53,6 +53,7 @@ router.get('/search', async (req, res) => {
       return {
         title,
         author: author_name ? author_name[0] : 'Unknown',
+        // you need the cover_i her right?
         publicationDate: first_publish_year ? first_publish_year.toString() : 'Unknown',
       };
     });
