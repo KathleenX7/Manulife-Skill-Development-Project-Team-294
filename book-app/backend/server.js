@@ -20,9 +20,10 @@ app.get('/searchgeneral', (req, res) => {
             author: book.author_name ? book.author_name[0] : 'Unknown',
             cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
             publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A',
-            edition_count: book.edition_count ? `${book.edition_count}` : '1',
-            number_of_pages_median: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
-            ratings_average: book.ratings_average ? `${book.ratings_average}` : "N/A"
+            editions: book.edition_count ? `${book.edition_count}` : '1',
+            pages: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
+            ratings: book.ratings_average ? `${book.ratings_average}` : "N/A",
+            bookId: book.key.replace('/works/','')
           };
         });
         res.json(books); // Send the book search results as JSON response
@@ -68,9 +69,10 @@ app.get('/searchauthor', (req, res) => {
                     author: book.author_name ? book.author_name[0] : 'Unknown',
                     cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
                     publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A',
-                    edition_count: book.edition_count ? `${book.edition_count}` : '1',
-                    number_of_pages_median: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
-                    ratings_average: book.ratings_average ? `${book.ratings_average}` : "N/A"
+                    editions: book.edition_count ? `${book.edition_count}` : '1',
+                    pages: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
+                    ratings: book.ratings_average ? `${book.ratings_average}` : "N/A",
+                    bookId: book.key.replace('/works/','')
                   };
                 });
 
@@ -109,9 +111,10 @@ app.get('/searchauthor', (req, res) => {
             author: book.authors[0].name ? book.authors[0].name : 'Unknown',
             cover: book.cover_id ? `http://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
             publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A',
-            edition_count: book.edition_count ? `${book.edition_count}` : '1',
-            number_of_pages_median: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
-            ratings_average: book.ratings_average ? `${book.ratings_average}` : "N/A"
+            editions: book.edition_count ? `${book.edition_count}` : '1',
+            pages: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
+            ratings: book.ratings_average ? `${book.ratings_average}` : "N/A",
+            bookId: book.key.replace('/works/','')
           };
         });
         res.json(books); // Send the book search results as JSON response
