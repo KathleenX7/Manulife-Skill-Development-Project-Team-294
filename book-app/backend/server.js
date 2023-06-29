@@ -111,16 +111,6 @@ app.get('/searchauthor', (req, res) => {
       });
   });
   
-  // Endpoint for adding a book to the readlist
-  app.post('/readlist', (req, res) => {
-    const book = req.body; // Assuming the request body contains the book object to be added to the readlist
-  
-    // Save the book to the readlist (you can use a database or any other storage mechanism)
-    // For simplicity, we'll assume there's an array to store the readlist
-    readlist.push(book);
-  
-    res.status(201).json({ message: 'Book added to readlist successfully.' });
-  });
 
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
