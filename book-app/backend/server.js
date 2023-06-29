@@ -95,7 +95,7 @@ app.get('/searchauthor', (req, res) => {
     // Make a GET request to the Open Library API
     axios.get(`https://openlibrary.org/subjects/${searchQuery}.json?limit=16`)
       .then(response => {
-        const books = response.data.docs.map(book => {
+        const books = response.data.works.map(book => {
           return {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
