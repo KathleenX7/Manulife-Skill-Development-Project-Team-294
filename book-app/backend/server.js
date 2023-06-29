@@ -98,8 +98,8 @@ app.get('/searchauthor', (req, res) => {
         const books = response.data.works.map(book => {
           return {
             title: book.title,
-            author: book.author_name ? book.author_name[0] : 'Unknown',
-            cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
+            author: book.authors[0].name ? book.authors[0].name : 'Unknown',
+            cover: book.cover_id ? `http://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
             publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
           };
         });
