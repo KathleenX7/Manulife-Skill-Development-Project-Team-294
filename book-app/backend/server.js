@@ -124,6 +124,64 @@ app.get('/searchauthor', (req, res) => {
     res.status(201).json({ message: 'Book added to readlist successfully.' });
   });
 
+
+  // Middleware to parse request bodies
+app.use(express.json());
+
+
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/readlist?directConnection=true', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 30000,
+})
+  .then(() => {
+    console.log('Connected to the MongoDB database');
+  })
+  .catch(error => {
+    console.error('Failed to connect to the MongoDB database:', error);
+  });
+
+  const bookSchema = new mongoose.Schema({
+    title: String,
+    author: String,
+    description: String,
+  });
+  
+  const Book = mongoose.model('Book', bookSchema);
+
+  
+  app.post('/reading-list', (req, res) => {
+    const { title, author, description } = req.body;
+  
+    // Create a new Book instance
+    const book = new Book({ title, author, description });
+  
+    // Save the book to the database
+    book.save()
+      .then(() => {
+        res.json({ message: 'Book added to the reading list.' });
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while saving the book to the reading list.' });
+      });
+  });
+
+  app.get('/reading-list', (req, res) => {
+    // Retrieve all books from the database
+    Book.find()
+      .then(books => {
+        res.json(books);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while retrieving the reading list.' });
+      });
+  });
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
