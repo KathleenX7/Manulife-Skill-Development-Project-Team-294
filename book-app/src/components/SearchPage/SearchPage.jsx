@@ -26,7 +26,7 @@ function SearchPage() {
         <div style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '80px' }}>Bookpedia</p>
             <SearchBar onSearchAuthor = {handleSearchAuthor} onSearchSubject = {handleSearchSubject} onSeachGeneral = {handleSearchGeneral}/>
-            <BookList/>
+            <BookList data = {books}/>
             {/* <Link to="/booklist" className="btn btn-primary">Book List</Link> */}
         </div>
     )
