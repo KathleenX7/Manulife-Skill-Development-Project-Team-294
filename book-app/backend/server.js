@@ -131,8 +131,8 @@ dotenv.config;
 const port = process.env.PORT || 3000;
 
 // Initialize Supabase client
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_API_KEY;
+const supabaseUrl = "https://nqkfueqxtghxwpknupfg.supabase.co"
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xa2Z1ZXF4dGdoeHdwa251cGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgwMDg2ODksImV4cCI6MjAwMzU4NDY4OX0.R-vrDJuTOBSAFsuTCsL2DlPR3vYDDJ0IlTcxTiyJ9rY"
 const supabase = createClient(supabaseUrl, supabaseKey);
 
 // Middleware to parse JSON request bodies
