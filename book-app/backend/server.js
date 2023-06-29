@@ -1,9 +1,11 @@
 import express from "express";
 import axios from "axios";
+import cors from "cors";
 
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 
 // Endpoint for searching books in general
 app.get('/searchgeneral', (req, res) => {
