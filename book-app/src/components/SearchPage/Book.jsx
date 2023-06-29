@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-const Book = ({key, addToReading, moreInfo, data}) => {
+const Book = ({addToReading, moreInfo, data}) => {
     const [divClass, setClass] = useState("");
     const [makeSmaller, setSmaller] = useState("divBookLarger");
     useEffect(() => {
