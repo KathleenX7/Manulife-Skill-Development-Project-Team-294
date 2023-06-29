@@ -17,7 +17,7 @@ app.get('/searchgeneral', (req, res) => {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
             cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-            publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
+            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
           };
         });
         res.json(books); // Send the book search results as JSON response
@@ -62,7 +62,7 @@ app.get('/searchauthor', (req, res) => {
                     title: book.title,
                     author: book.author_name ? book.author_name[0] : 'Unknown',
                     cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-                    publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
+                    publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
                   };
                 });
 
@@ -100,7 +100,7 @@ app.get('/searchauthor', (req, res) => {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
             cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-            publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
+            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
           };
         });
         res.json(books); // Send the book search results as JSON response
