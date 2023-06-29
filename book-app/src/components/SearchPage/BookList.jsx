@@ -9,7 +9,7 @@ const BookList = ({data, addedBook}) => {
     const handleAddReading = (book) => {
         addedBook(book.title);
         fetch("http://localhost:3000/reading-list", {
-            method: "POST",
+            method: "DELETE",
             headers: {
                 "content-Type": "application/json",
             },

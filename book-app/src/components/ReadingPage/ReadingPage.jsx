@@ -9,8 +9,23 @@ function ReadingPage({goToSearch}) {
             .then((data) => setBooks(data));   
     }, []);
     const handleRemoveReading = (book) => {
-        console.log("remove" + book.title);
-        // delete from reading, the book is the one clicked
+        // fetch("http://localhost:3000/reading-list", {
+        //     method: "POST",
+        //     headers: {
+        //         "content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         // Request payload data in JSON format
+        //         title: book.title,
+        //         author: book.author,
+        //         cover: book.cover,
+        //         year: book.publicationDate,
+        //         // other properties
+        //       }),
+        //     })
+        //     .then((response) => response.json())
+        //     .then((data) => console.log(data))
+        //     .catch((error) => console.error(error));
     }
     return(
         <div style = {{textAlign: 'center'}}>
