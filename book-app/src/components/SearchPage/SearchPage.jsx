@@ -1,3 +1,4 @@
+import BookList from "./BookList";
 import SearchBar from "./SearchBar";
 
 function SearchPage() {
@@ -5,7 +6,8 @@ function SearchPage() {
         <div style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '80px' }}>Bookpedia</p>
             <SearchBar/>
-            <Link to="/booklist" className="btn btn-primary">Book List</Link>
+            <BookList/>
+            {/* <Link to="/booklist" className="btn btn-primary">Book List</Link> */}
         </div>
     )
 };
