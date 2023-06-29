@@ -10,7 +10,7 @@ app.get('/searchgeneral', (req, res) => {
     const searchQuery = req.query.q; // Get the search query from the request query parameters
   
     // Make a GET request to the Open Library API
-    axios.get(`https://openlibrary.org/search.json?q=${searchQuery}&limit=4`)
+    axios.get(`https://openlibrary.org/search.json?q=${searchQuery}&limit=16`)
       .then(response => {
         const books = response.data.docs.map(book => {
           return {
@@ -31,8 +31,7 @@ app.get('/searchgeneral', (req, res) => {
 app.get('/searchauthor', (req, res) => {
   const searchQuery = req.query.q; // Get the search query from the request query parameters
   let authorKey;
-  let authorName;
-  let bookKeys = new Array(4);
+  let bookKeys = new Array(16);
   let books = [];
 
   // Make a GET request to the Open Library API to search for authors
@@ -40,10 +39,9 @@ app.get('/searchauthor', (req, res) => {
     .then(response => {
       if (response.data.docs.length > 0) {
         authorKey = response.data.docs[0].key;
-        authorName = response.data.docs[0].name;
 
         // Make a GET request to the Open Library API to fetch the author's works using the author key
-        axios.get(`https://openlibrary.org/authors/${authorKey}/works.json?limit=4`)
+        axios.get(`https://openlibrary.org/authors/${authorKey}/works.json?limit=16`)
           .then(response => {
             for (let i = 0; i < 4; i++) {
               bookKeys[i] = response.data.entries[i].key.replace('/works/','');
@@ -95,7 +93,7 @@ app.get('/searchauthor', (req, res) => {
     const searchQuery = req.query.q; // Get the search query from the request query parameters
   
     // Make a GET request to the Open Library API
-    axios.get(`https://openlibrary.org/subjects/${subject}.json?limit=4`)
+    axios.get(`https://openlibrary.org/subjects/${searchQuery}.json?limit=16`)
       .then(response => {
         const books = response.data.docs.map(book => {
           return {
