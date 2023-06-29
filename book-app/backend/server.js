@@ -10,14 +10,14 @@ app.get('/searchgeneral', (req, res) => {
     const searchQuery = req.query.q; // Get the search query from the request query parameters
   
     // Make a GET request to the Open Library API
-    axios.get(`https://openlibrary.org/search.json?q=${searchQuery}&limit=4`)
+    axios.get(`https://openlibrary.org/search.json?q=${searchQuery}&limit=16`)
       .then(response => {
         const books = response.data.docs.map(book => {
           return {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
             cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-            publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
+            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
           };
         });
         res.json(books); // Send the book search results as JSON response
@@ -31,8 +31,7 @@ app.get('/searchgeneral', (req, res) => {
 app.get('/searchauthor', (req, res) => {
   const searchQuery = req.query.q; // Get the search query from the request query parameters
   let authorKey;
-  let authorName;
-  let bookKeys = new Array(4);
+  let bookKeys = new Array(16);
   let books = [];
 
   // Make a GET request to the Open Library API to search for authors
@@ -40,12 +39,11 @@ app.get('/searchauthor', (req, res) => {
     .then(response => {
       if (response.data.docs.length > 0) {
         authorKey = response.data.docs[0].key;
-        authorName = response.data.docs[0].name;
 
         // Make a GET request to the Open Library API to fetch the author's works using the author key
-        axios.get(`https://openlibrary.org/authors/${authorKey}/works.json?limit=4`)
+        axios.get(`https://openlibrary.org/authors/${authorKey}/works.json?limit=16`)
           .then(response => {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 16; i++) {
               bookKeys[i] = response.data.entries[i].key.replace('/works/','');
             }
 
@@ -64,7 +62,7 @@ app.get('/searchauthor', (req, res) => {
                     title: book.title,
                     author: book.author_name ? book.author_name[0] : 'Unknown',
                     cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-                    publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
+                    publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
                   };
                 });
 
@@ -90,6 +88,39 @@ app.get('/searchauthor', (req, res) => {
 });
 
 
+// Endpoint for searching books by subject
+  app.get('/searchsubject', (req, res) => {
+    const searchQuery = req.query.q; // Get the search query from the request query parameters
+  
+    // Make a GET request to the Open Library API
+    axios.get(`https://openlibrary.org/subjects/${searchQuery}.json?limit=16`)
+      .then(response => {
+        const books = response.data.works.map(book => {
+          return {
+            title: book.title,
+            author: book.authors[0].name ? book.authors[0].name : 'Unknown',
+            cover: book.cover_id ? `http://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
+            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
+          };
+        });
+        res.json(books); // Send the book search results as JSON response
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while searching for books.' });
+      });
+  });
+  
+  // Endpoint for adding a book to the readlist
+  app.post('/readlist', (req, res) => {
+    const book = req.body; // Assuming the request body contains the book object to be added to the readlist
+  
+    // Save the book to the readlist (you can use a database or any other storage mechanism)
+    // For simplicity, we'll assume there's an array to store the readlist
+    readlist.push(book);
+  
+    res.status(201).json({ message: 'Book added to readlist successfully.' });
+  });
 
 const { createClient } = require('@supabase/supabase-js');
 require('dotenv').config();
@@ -141,6 +172,7 @@ try {
   res.status(500).json({ error: 'An error occurred while fetching the reading list' });
 }
 });
+
 
 
 

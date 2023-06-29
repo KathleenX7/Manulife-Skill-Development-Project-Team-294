@@ -23,7 +23,7 @@ function PopupBook(props){
                 </div>
                     
                     
-            </div>
+            </div> 
         </div>
     ) : "";
 };
