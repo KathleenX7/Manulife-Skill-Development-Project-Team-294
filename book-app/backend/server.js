@@ -140,13 +140,13 @@ app.use(express.json());
 
 // Add a book to the reading list
 app.post('/reading-list', async (req, res) => {
-const { title, author, cover, year } = req.body;
+const { title, author, cover, year, bookId} = req.body;
 
 try {
   // Insert the book into the 'reading_list' table
   const { data, error } = await supabase
     .from('reading_list')
-    .insert([{ title, author, cover, year }]);
+    .insert([{ title, author, cover, year, bookId }]);
 
   if (error) {
     throw new Error(error.message);
@@ -176,6 +176,28 @@ try {
 }
 });
 
+
+//Deleting books from reading list
+app.delete('/reading-list/:bookId', async (req, res) => {
+  const { bookId } = req.params;
+
+  try {
+    
+    const { data, error } = await supabase
+      .from('reading_list')
+      .delete()
+      .eq('bookId', bookId);
+
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    res.json({ message: 'Book removed from the reading list' });
+  } catch (error) {
+    console.error(error); // Optional: Handle error response
+    res.status(500).json({ error: 'Failed to remove book from the reading list' });
+  }
+});
 
 
 
