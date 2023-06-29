@@ -36,7 +36,7 @@ const ReadingBook = ({data, removeFromReading}) => {
                 <h6>{data.title} </h6> {/* add the link to the title */}
                 <div className = "newLine">
                     <p className = "leftAlign" >{data.author}</p>
-                    <p className = "rightAlign" >{data.publicationDate}</p>
+                    <p className = "rightAlign" >{data.year}</p>
                 </div>
 
                 {/* <button onClick = {handleMoreInfo} className = "subDivBook-clearButton"><u>More Info</u></button>
