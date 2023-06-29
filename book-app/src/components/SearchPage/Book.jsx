@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import bookImage from "../../assets/book title.jpg";
 
-const Book = ({addToReading, moreInfo, title, author, year, description}) => {
+const Book = ({addToReading, moreInfo, title, author, year, description, image}) => {
     const [divClass, setClass] = useState("");
     const [makeSmaller, setSmaller] = useState("divBookLarger");
     useEffect(() => {
@@ -34,7 +34,7 @@ const Book = ({addToReading, moreInfo, title, author, year, description}) => {
         <>
         <div className = {divClass + " " + makeSmaller}>
             <div className = "subDivBookImg"> 
-                <img src = {bookImage} alt = "book image"></img>
+                <img src = {image} alt = "book image"></img>
             </div>
             <div className = "subDivBook"> 
                 <h6>{title} </h6> {/* add the link to the title */}

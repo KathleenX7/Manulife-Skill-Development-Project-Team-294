@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const SearchBar = ({onSearchAuthor, onSearchSubject, onSeachGeneral}) => {
+const SearchBar = ({onSearchAuthor, onSearchSubject, onSearchGeneral}) => {
     const [author, setAuthor] = useState("");
     const [subject, setSubject] = useState("");
     const [general, setGeneral] = useState("");
@@ -8,7 +8,8 @@ const SearchBar = ({onSearchAuthor, onSearchSubject, onSeachGeneral}) => {
         setAuthor(event.target.value);
     }
     const handleSearchAuthor = () => {
-        onSearchAuthor(author);
+        if(author != ""){ onSearchAuthor(author); }
+        
         setAuthor("");
     }
 
@@ -16,7 +17,7 @@ const SearchBar = ({onSearchAuthor, onSearchSubject, onSeachGeneral}) => {
         setSubject(event.target.value);
     }
     const handleSearchSubject = () => {
-        onSearchSubject(subject);
+        if(subject != "") {onSearchSubject(subject);}
         setSubject("");
     }
 
@@ -24,7 +25,7 @@ const SearchBar = ({onSearchAuthor, onSearchSubject, onSeachGeneral}) => {
         setGeneral(event.target.value);
     }
     const handleSearchGeneral = () => {
-        onSearchGeneral(general);
+        if(general != "") {onSearchGeneral(general);}
         setGeneral("");
     }
     
