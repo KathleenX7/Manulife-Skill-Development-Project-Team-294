@@ -1,9 +1,11 @@
 import express from "express";
 import axios from "axios";
+import cors from "cors";
 
 const app = express();
 const PORT = 3000;
 
+app.use(cors());
 
 // Endpoint for searching books in general
 app.get('/searchgeneral', (req, res) => {
@@ -17,7 +19,10 @@ app.get('/searchgeneral', (req, res) => {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
             cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
+            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A',
+            edition_count: book.edition_count ? `${book.edition_count}` : '1',
+            number_of_pages_median: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
+            ratings_average: book.ratings_average ? `${book.ratings_average}` : "N/A"
           };
         });
         res.json(books); // Send the book search results as JSON response
@@ -62,7 +67,10 @@ app.get('/searchauthor', (req, res) => {
                     title: book.title,
                     author: book.author_name ? book.author_name[0] : 'Unknown',
                     cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-                    publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
+                    publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A',
+                    edition_count: book.edition_count ? `${book.edition_count}` : '1',
+                    number_of_pages_median: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
+                    ratings_average: book.ratings_average ? `${book.ratings_average}` : "N/A"
                   };
                 });
 
@@ -100,7 +108,10 @@ app.get('/searchauthor', (req, res) => {
             title: book.title,
             author: book.authors[0].name ? book.authors[0].name : 'Unknown',
             cover: book.cover_id ? `http://covers.openlibrary.org/b/id/${book.cover_id}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
-            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A'
+            publicationDate: book.first_publish_year ? `${book.first_publish_year}` : 'N/A',
+            edition_count: book.edition_count ? `${book.edition_count}` : '1',
+            number_of_pages_median: book.number_of_pages_median ? `${book.number_of_pages_median}` : "Unknown",
+            ratings_average: book.ratings_average ? `${book.ratings_average}` : "N/A"
           };
         });
         res.json(books); // Send the book search results as JSON response
@@ -111,19 +122,11 @@ app.get('/searchauthor', (req, res) => {
       });
   });
   
-  // Endpoint for adding a book to the readlist
-  app.post('/readlist', (req, res) => {
-    const book = req.body; // Assuming the request body contains the book object to be added to the readlist
-  
-    // Save the book to the readlist (you can use a database or any other storage mechanism)
-    // For simplicity, we'll assume there's an array to store the readlist
-    readlist.push(book);
-  
-    res.status(201).json({ message: 'Book added to readlist successfully.' });
-  });
 
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+
+dotenv.config;
 
 const port = process.env.PORT || 3000;
 

@@ -46,8 +46,29 @@
   border: rgb(255, 255, 255) .2rem solid;
   border-radius: 8px;
   min-height: 1.6rem;
-  margin-right: 2rem;
-  width:15%;
+  width:100%;
+}
+.searchBar-btn {
+  width: 75%;
+  margin-top: 3%;
+  height: 100%;
+}
+.goReading-btn{
+  margin-bottom: 1%;
+  width: 75%;
+
+  border: #0b2a47 .2rem solid;
+  background-color: #ffffff23;
+  color: #0b2a47;
+}
+.searchBar-container{
+  display: flex;
+  flex-direction: column;
+  width:30%;
+  padding-left:2%;
+  padding-right:2%;
+  align-items: center;
+  height: auto;
 }
 
 img{
@@ -176,4 +197,10 @@ img{
 
 .popup-inner-sub{
   flex:5;
+}
+
+.searchBar-searchBy{
+  text-align: left;
+  padding-top: 1rem;
+  padding-left: 3%;
 }

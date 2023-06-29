@@ -1,33 +1,49 @@
 import {useState, useEffect} from "react";
 import bookImage from "../../assets/book title.jpg";
 
-const ReadingBook = () => {
-    const [makeSmaller, setSmaller] = useState(false);
+const ReadingBook = ({data, removeFromReading}) => {
+    const [divClass, setClass] = useState("");
+    const [makeSmaller, setSmaller] = useState("divBookLarger");
     useEffect(() => {
+        let x = Math.floor((Math.random() * 2) + 1);
+        if(x == 1){
+            setClass("divBook divBookPurple");
+        }else{
+            setClass("divBook");
+        }
+        if(window.innerWidth < 990){
+            setSmaller("");
+        }
+        
         window.addEventListener("resize", () => {
             if(window.innerWidth < 990){
-                setSmaller(true);
+                setSmaller("");
             }else{
-                setSmaller(false);
+                setSmaller("divBookLarger");
             }
         });
     }, []);
-    
+    const handleRemoveReading = () => {
+        removeFromReading(data);
+    }
     return (
         <>
-        <div className = {makeSmaller? "divBook": "divBook divBookLarger"}>
+        <div className = {divClass + " " + makeSmaller}>
             <div className = "subDivBookImg"> 
-                <img src = {bookImage} alt = "book image"></img>
+                <img src = {data.cover} alt = "book image"></img>
             </div>
             <div className = "subDivBook"> 
-                <h6>Harry Potter and the Philosopher's Stone</h6> {/* add the link to the title */}
+                <h6>{data.title} </h6> {/* add the link to the title */}
                 <div className = "newLine">
-                    <p className = "leftAlign" >Author</p>
-                    <p className = "rightAlign" >Year</p>
+                    <p className = "leftAlign" >{data.author}</p>
+                    <p className = "rightAlign" >{data.publicationDate}</p>
                 </div>
 
-                <p>This book is about a lot of content that is content. I am not writing nonsense so that this is about the length of a description. We also might need to consider if the description is too long, but lets get the formatting in first. Do you think this is long enought. lets see</p>
+                {/* <button onClick = {handleMoreInfo} className = "subDivBook-clearButton"><u>More Info</u></button>
+                
+                <p>{description}</p> */}
             </div>
+            <button onClick = {handleRemoveReading}> remove from reading list</button>
         </div>
         </>
     )

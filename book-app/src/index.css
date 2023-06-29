@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@500&display=swap');
+
 
 :root {
   font-family: 'Roboto Serif', serif;
@@ -79,3 +81,8 @@ button:focus-visible {
   }
 }
 
+
+.popup-additionalInfo { 
+  text-align: left;
+  margin-left: 5%;
+}
