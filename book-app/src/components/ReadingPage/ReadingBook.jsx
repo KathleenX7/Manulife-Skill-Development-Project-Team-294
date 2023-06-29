@@ -1,8 +1,9 @@
 import {useState, useEffect} from "react";
 import bookImage from "../../assets/book title.jpg";
 
-const ReadingBook = ({title, author, year, description, image}) => {
-    const [makeSmaller, setSmaller] = useState(false);
+const ReadingBook = ({data, removeFromReading}) => {
+    const [divClass, setClass] = useState("");
+    const [makeSmaller, setSmaller] = useState("divBookLarger");
     useEffect(() => {
         let x = Math.floor((Math.random() * 2) + 1);
         if(x == 1){
@@ -22,24 +23,27 @@ const ReadingBook = ({title, author, year, description, image}) => {
             }
         });
     }, []);
-    
+    const handleRemoveReading = () => {
+        removeFromReading(data);
+    }
     return (
         <>
         <div className = {divClass + " " + makeSmaller}>
             <div className = "subDivBookImg"> 
-                <img src = {image} alt = "book image"></img>
+                <img src = {data.cover} alt = "book image"></img>
             </div>
             <div className = "subDivBook"> 
-                <h6>{title} </h6> {/* add the link to the title */}
+                <h6>{data.title} </h6> {/* add the link to the title */}
                 <div className = "newLine">
-                    <p className = "leftAlign" >{author}</p>
-                    <p className = "rightAlign" >{year}</p>
+                    <p className = "leftAlign" >{data.author}</p>
+                    <p className = "rightAlign" >{data.publicationDate}</p>
                 </div>
 
                 {/* <button onClick = {handleMoreInfo} className = "subDivBook-clearButton"><u>More Info</u></button>
                 
                 <p>{description}</p> */}
             </div>
+            <button onClick = {handleRemoveReading}> remove from reading list</button>
         </div>
         </>
     )
