@@ -1,5 +1,5 @@
-const express = require('express');
-const axios = require('axios');
+import express from "express";
+import axios from "axios";
 
 const app = express();
 const PORT = 3000;
@@ -10,13 +10,13 @@ app.get('/searchgeneral', (req, res) => {
     const searchQuery = req.query.q; // Get the search query from the request query parameters
   
     // Make a GET request to the Open Library API
-    axios.get(`https://openlibrary.org/search.json?q=${searchQuery}?limit=4`)
+    axios.get(`https://openlibrary.org/search.json?q=${searchQuery}&limit=4`)
       .then(response => {
         const books = response.data.docs.map(book => {
           return {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
-            cover: `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`? book.cover_i[0] : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
+            cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
             publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
           };
         });
@@ -48,7 +48,7 @@ app.get('/searchgeneral', (req, res) => {
           return {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
-            cover: `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`? book.cover_i[0] : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
+            cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
             publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
           };
         });
@@ -67,7 +67,7 @@ app.get('/searchgeneral', (req, res) => {
           return {
             title: book.title,
             author: book.author_name ? book.author_name[0] : 'Unknown',
-            cover: `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg`? book.cover_i[0] : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
+            cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
             publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
           };
         });
