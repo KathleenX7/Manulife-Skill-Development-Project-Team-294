@@ -143,7 +143,7 @@ app.use(express.json());
 
 // Add a book to the reading list
 app.post('/reading-list', async (req, res) => {
-const { title, author, cover, year, editions, ratings, bookId} = req.body;
+const { title, author, cover, year, editions, ratings, bookId } = req.body;
 
 try {
   // Check if the book with the given bookId already exists in the reading list
