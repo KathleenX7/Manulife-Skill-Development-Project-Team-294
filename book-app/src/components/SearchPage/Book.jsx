@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import bookImage from "../../assets/book title.jpg";
 
-const Book = () => {
+const Book = ({addToReading, moreInfo, title, author, year, description}) => {
     const [divClass, setClass] = useState("");
     const [makeSmaller, setSmaller] = useState("divBookLarger");
     useEffect(() => {
@@ -24,6 +24,12 @@ const Book = () => {
         });
     }, []);
     
+    const handleAddReading = () => {
+        addToReading();
+    }
+    const handleMoreInfo = () => {
+        moreInfo();
+    }
     return (
         <>
         <div className = {divClass + " " + makeSmaller}>
@@ -31,15 +37,18 @@ const Book = () => {
                 <img src = {bookImage} alt = "book image"></img>
             </div>
             <div className = "subDivBook"> 
-                <h6>Harry Potter and the Philosopher's Stone</h6> {/* add the link to the title */}
+                <h6>{title} </h6> {/* add the link to the title */}
                 <div className = "newLine">
-                    <p className = "leftAlign" >Author</p>
-                    <p className = "rightAlign" >Year</p>
+                    <p className = "leftAlign" >{author}</p>
+                    <p className = "rightAlign" >{year}</p>
                 </div>
 
-                <p>This book is about a lot of content that is content. I am not writing nonsense so that this is about the length of a description. We also might need to consider if the description is too long, but lets get the formatting in first. Do you think this is long enought. lets see</p>
+                <button onClick = {handleMoreInfo} className = "subDivBook-clearButton"><u>More Info</u></button>
+                
+                {/* <p>{description}</p> */}
             </div>
-            <button>Add to reading list</button>
+            <button onClick = {handleAddReading}>Add to reading list</button>
+            
         </div>
         </>
     )
