@@ -1,8 +1,9 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  width: 100%;
+  /* margin: 0 auto; */
   padding: 2rem;
-  text-align: center;
+  text-align: left;
+  
 }
 
 .logo {
@@ -12,7 +13,7 @@
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em #10189eaa);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
@@ -38,5 +39,141 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #AF929D;
+}
+
+.searchInput {
+  border: rgb(255, 255, 255) .2rem solid;
+  border-radius: 8px;
+  min-height: 1.6rem;
+  margin-right: 2rem;
+  width:15%;
+}
+
+img{
+  height: 100%;
+  max-width: 90%;
+  vertical-align: top;
+}
+
+.divBook {
+  flex: 1 1 50%;
+  display: flex;
+  border: solid .3rem #b2675eff;
+  border-radius: 1rem;
+  margin: 1%;
+  padding: 1%;
+  background-color: rgb(237, 203, 198);
+  align-items: center;
+  flex-wrap: wrap;
+  color: #1b1b1b;
+}
+
+.divBookPurple{
+  border-color: #5d6092;
+  background-color: #D1C8E1;
+}
+
+.divBook button{
+  /* flex: 0; */
+  color: rgb(255, 255, 255);
+  flex: 1 0 100%;
+  background-color: #b2675e;
+}
+.divBook u{
+  color: #b2675e;
+}
+
+.divBookPurple button{
+  background-color: #5d6092;
+}
+
+.divBookPurple u{
+  color: #5d6092;
+}
+
+.divBookLarger{
+  max-width: 45%;
+}
+
+.bookListFlex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.subDivBook {
+  flex: 5;
+  vertical-align: top;
+  text-align:left;
+  /* width: 60%; */
+}
+
+.subDivBook button{
+  background-color: #ffffff00;
+  /* border: .3rem solid #b2675e;
+  border-radius: .7rem; */
+  text-align: left;
+  margin: 0;
+  padding:0;
+}
+.subDivBookImg {
+  /* flex: 1; */
+  vertical-align: top;
+  width: 16vh;
+  /* height: auto; */
+  margin: 1%;
+  /* width: 60%; */
+  object-fit: cover;
+  
+}
+
+.newLine{
+  /* height: 10px; */
+  margin-bottom: 2rem;
+}
+.leftAlign{
+  float: left;
+}
+.rightAlign{
+  float: right;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left:  0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-inner{
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background-color: white;
+  
+  flex: 1 1 50%;
+  display: flex;
+  border: solid .3rem #b2675eff;
+  border-radius: 1rem;
+  margin: 1%;
+  padding: 1%;
+  background-color: rgb(237, 203, 198);
+  align-items: center;
+  flex-wrap: wrap;
+  color: #1b1b1b;
+}
+.popup-inner button{
+  color: rgb(255, 255, 255);
+  width: 50%;
+  margin-top: 2%;
+  background-color: #b2675e;
+}
+
+.popup-inner-sub{
+  flex:5;
 }

@@ -7,10 +7,10 @@ const SearchBar = () => {
 
     return (
         <div>
-            <div>
-                <input type = "Author" value = {author}></input>
-                <input type = "Subject" value = {subject}></input>
-                <input type = "General Information" value = {general}></input>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <input type = "Author" className = "searchInput" style={{ textAlign: 'center'}} type = "text" placeholder="search by author" value = {author} ></input>
+                <input type = "Subject" className = "searchInput" style={{ textAlign: 'center'}} type = "text" placeholder="search by title" value = {title}></input>
+                <input type = "General Information" className = "searchInput" style={{ textAlign: 'center'}} type = "text" placeholder="search by description" value = {description}></input>
                 <button> Search by author </button>
                 <button> Search by subject </button>
                 <button> Search by general </button>
