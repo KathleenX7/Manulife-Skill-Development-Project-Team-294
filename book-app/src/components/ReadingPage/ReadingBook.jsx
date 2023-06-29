@@ -1,5 +1,4 @@
 import {useState, useEffect} from "react";
-import bookImage from "../../assets/book title.jpg";
 
 const ReadingBook = ({data, removeFromReading}) => {
     const [divClass, setClass] = useState("");

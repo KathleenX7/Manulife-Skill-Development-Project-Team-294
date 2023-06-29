@@ -1,7 +1,5 @@
 import React from "react";
 
-import bookImage from "../../assets/book title.jpg";
-
 function PopupBook(props){
     const handleClose = () =>{
         props.closePopup();
