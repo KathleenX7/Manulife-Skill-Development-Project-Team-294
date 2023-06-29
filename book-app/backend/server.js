@@ -43,7 +43,7 @@ app.get('/searchauthor', (req, res) => {
         // Make a GET request to the Open Library API to fetch the author's works using the author key
         axios.get(`https://openlibrary.org/authors/${authorKey}/works.json?limit=16`)
           .then(response => {
-            for (let i = 0; i < 4; i++) {
+            for (let i = 0; i < 16; i++) {
               bookKeys[i] = response.data.entries[i].key.replace('/works/','');
             }
 
