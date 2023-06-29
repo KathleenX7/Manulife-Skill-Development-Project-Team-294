@@ -9,23 +9,17 @@ function ReadingPage({goToSearch}) {
             .then((data) => setBooks(data));   
     }, []);
     const handleRemoveReading = (book) => {
-        // fetch("http://localhost:3000/reading-list", {
-        //     method: "POST",
-        //     headers: {
-        //         "content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         // Request payload data in JSON format
-        //         title: book.title,
-        //         author: book.author,
-        //         cover: book.cover,
-        //         year: book.publicationDate,
-        //         // other properties
-        //       }),
-        //     })
-        //     .then((response) => response.json())
-        //     .then((data) => console.log(data))
-        //     .catch((error) => console.error(error));
+        fetch(`http://localhost:3000/reading-list/${book.bookId}`, {
+            method: "DELETE",
+            })
+            .then((response) => {
+                if(response.ok){
+                    console.log("deleted " + book.id);
+                }else {
+                    console.log("not deleted");
+                }
+            })
+            .catch((error) => console.error(error));
     }
     return(
         <div style = {{textAlign: 'center'}}>
@@ -34,7 +28,7 @@ function ReadingPage({goToSearch}) {
 
             <div className = "bookListFlex">
                 {books?.map((book) => (
-                    <ReadingBook key = {book.title + " " + book.year} removeFromReading = {handleRemoveReading} data = {book}/>
+                    <ReadingBook key = {book.bookId} removeFromReading = {handleRemoveReading} data = {book}/>
                 ))}
             </div>
         </div>

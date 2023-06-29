@@ -9,7 +9,7 @@ const BookList = ({data, addedBook}) => {
     const handleAddReading = (book) => {
         addedBook(book.title);
         fetch("http://localhost:3000/reading-list", {
-            method: "DELETE",
+            method: "POST",
             headers: {
                 "content-Type": "application/json",
             },
@@ -22,7 +22,7 @@ const BookList = ({data, addedBook}) => {
                 editions: book.editions,
                 pages: book.pages,
                 ratings: book.ratings,
-                bookId: book.bookId
+                bookId: book.bookId,
               }),
             })
             .then((response) => response.json())
@@ -42,7 +42,7 @@ const BookList = ({data, addedBook}) => {
         <div className = "bookListFlex">
 
             {Array.isArray(data)? data.map((book) => (
-                <Book key = {book.title + " " + book.publicationDate} addToReading = {handleAddReading} moreInfo = {handleOpenPopup} data = {book}/>
+                <Book key = {book.bookId} addToReading = {handleAddReading} moreInfo = {handleOpenPopup} data = {book}/>
             )): ""}
 
             <PopupBook trigger = {popup} closePopup = {handleClosePopup} data = {popupData} >hi</PopupBook>

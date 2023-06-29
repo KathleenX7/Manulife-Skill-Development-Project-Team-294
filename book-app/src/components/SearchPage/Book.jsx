@@ -1,7 +1,5 @@
 import {useState, useEffect} from "react";
-import bookImage from "../../assets/book title.jpg";
-
-const Book = ({addToReading, moreInfo, data}) => {
+const Book = ({key, addToReading, moreInfo, data}) => {
     const [divClass, setClass] = useState("");
     const [makeSmaller, setSmaller] = useState("divBookLarger");
     useEffect(() => {
