@@ -19,7 +19,10 @@ const BookList = ({data, addedBook}) => {
                 author: book.author,
                 cover: book.cover,
                 year: book.publicationDate,
-                // other properties
+                editions: book.editions,
+                pages: book.pages,
+                ratings: book.ratings,
+                bookId: book.bookId
               }),
             })
             .then((response) => response.json())

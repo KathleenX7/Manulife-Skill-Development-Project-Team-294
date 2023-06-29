@@ -18,9 +18,9 @@ function PopupBook(props){
                         <p className = "rightAlign" > {props.data.publicationDate}</p>
                     </div>
                     <div className = "popup-additionalInfo">
-                        <p> <b>Edition Count:</b> {props.data.edition_count}</p>
-                        <p> <b>Pages:</b> {props.data.number_of_pages_median}</p>
-                        <p> <b>Rating:</b> {props.data.ratings_average}</p>
+                        <p> <b>Edition Count:</b> {props.data.editions}</p>
+                        <p> <b>Pages:</b> {props.data.pages}</p>
+                        <p> <b>Rating:</b> {props.data.ratings}</p>
                     </div>
                     
 
