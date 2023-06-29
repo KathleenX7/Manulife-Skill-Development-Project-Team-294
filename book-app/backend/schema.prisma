@@ -1,0 +1,46 @@
+datasource db {
+    provider          = "postgresql"
+    url               = env("DATABASE_URL")
+  }
+  
+  generator client {
+    provider = "prisma-client-js"
+  }
+  
+  enum BookStatus{
+    Issued
+    Available
+    NotAvailable
+  }
+
+  model User{
+    id Int @id@default(autoincrement())
+    name String
+    email String @unique
+    password String
+
+    Books Book[]
+  }
+
+  model Book{
+    id Int @id@default(autoincrement())
+    Name String
+    AuthorId Int
+    PublishedData Int
+    ImageUrl String
+    Status BookStatus
+    IssuedBy Int?
+    IssueDate DateTime?
+    DueDate DateTime?
+
+    author Author @relation(fields: [AuthorId], references: [id])
+    user User? @relation(fields: [IssuedBy], references: [id]) 
+    
+    }
+
+  model Author{
+    id Int @id@default(autoincrement())
+    name String
+
+    Books Book[]
+  }
