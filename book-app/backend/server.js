@@ -114,8 +114,10 @@ app.get('/searchauthor', (req, res) => {
   });
   
 
-const { createClient } = require('@supabase/supabase-js');
-require('dotenv').config();
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+
+dotenv.config;
 
 const port = process.env.PORT || 3000;
 
