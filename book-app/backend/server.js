@@ -46,23 +46,23 @@ app.get('/searchauthor', (req, res) => {
         axios.get(`https://openlibrary.org/authors/${authorKey}/works.json?limit=4`)
           .then(response => {
             for (let i = 0; i < 4; i++) {
-              bookKeys[i] = response.data.entries[i].key;
+              bookKeys[i] = response.data.entries[i].key.replace('/works/','');
             }
 
             // Make parallel requests to fetch details of each book using the book keys
             const bookPromises = bookKeys.map(bookKey =>
-              axios.get(`https://openlibrary.org${bookKey}.json`)
+              axios.get(`https://openlibrary.org/search.json?q=${bookKey}&limit=1`)
             );
 
             // Wait for all book requests to complete
             Promise.all(bookPromises)
               .then(bookResponses => {
                 books = bookResponses.map(bookResponse => {
-                  const book = bookResponse.data;
+                  const book = bookResponse.data.docs[0];
 
                   return {
                     title: book.title,
-                    author: authorName,
+                    author: book.author_name ? book.author_name[0] : 'Unknown',
                     cover: book.cover_i ? `http://covers.openlibrary.org/b/id/${book.cover_i}-L.jpg` : `http://lgimages.s3.amazonaws.com/nc-sm.gif`,
                     publicationDate: book.first_publish_year ? `First published in ${book.first_publish_year}` : 'No publication year available'
                   };
