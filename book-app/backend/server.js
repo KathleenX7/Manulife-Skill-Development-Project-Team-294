@@ -143,7 +143,7 @@ app.use(express.json());
 
 // Add a book to the reading list
 app.post('/reading-list', async (req, res) => {
-const { title, author, cover, year, editions, pages, ratings, bookId} = req.body;
+const { title, author, cover, year, bookId} = req.body;
 
 try {
   // Check if the book with the given bookId already exists in the reading list
@@ -164,14 +164,14 @@ try {
   // Insert the book into the 'reading_list' table
   const { data: addbook, error: addBookError } = await supabase
     .from('reading_list')
-    .insert([{ title, author, cover, year, editions, pages, ratings, bookId }]);
+    .insert([{ title, author, cover, year, bookId }]);
 
   if (addBookError) {
     throw new Error(addBookError.message);
   }
 
   res.json({ message: 'Book added to the reading list' });
-} catch (error) {
+} catch (error) { 
   console.error(error);
   res.status(500).json({ error: 'An error occurred while adding the book to the reading list' });
 }
