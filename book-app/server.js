@@ -1,9 +1,12 @@
 import express from "express";
 import axios from "axios";
 import cors from "cors";
+import { createClient } from '@supabase/supabase-js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 
@@ -37,7 +40,7 @@ app.get('/searchgeneral', (req, res) => {
   });
 
 app.get('/searchauthor', (req, res) => {
-  const searchQuery = req.query.q; // Get the search query from the request query parameters
+  const searchQuery = req.query.q.replace(/\./g, '. ');; // Get the search query from the request query parameters
   let authorKey;
   let bookKeys = new Array(16);
   let books = [];
@@ -126,19 +129,9 @@ app.get('/searchauthor', (req, res) => {
         res.status(500).json({ error: 'An error occurred while searching for books.' });
       });
   });
-  
-
-import { createClient } from '@supabase/supabase-js';
-import dotenv from 'dotenv';
-
-dotenv.config;
-
-const port = process.env.PORT || 3000;
 
 // Initialize Supabase client
-const supabaseUrl = "https://nqkfueqxtghxwpknupfg.supabase.co"
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xa2Z1ZXF4dGdoeHdwa251cGZnIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODgwMDg2ODksImV4cCI6MjAwMzU4NDY4OX0.R-vrDJuTOBSAFsuTCsL2DlPR3vYDDJ0IlTcxTiyJ9rY"
-const supabase = createClient(supabaseUrl, supabaseKey);
+const supabase = createClient(process.env.supabaseUrl, process.env.supabaseKey);
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
