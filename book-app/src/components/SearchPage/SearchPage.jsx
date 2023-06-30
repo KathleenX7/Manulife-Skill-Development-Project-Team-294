@@ -5,7 +5,7 @@ function SearchPage({goToReading}) {
     const [books, setBooks] = useState([]);
     const handleSearchAuthor = (author) => {
         
-        fetch("http://localhost:3000/searchauthor?q=" + author)
+        fetch("/searchauthor?q=" + author)
             .then((response) => response.json())
             .then((data) => setBooks(data))
             .catch((error) => console.log(error));
@@ -13,14 +13,14 @@ function SearchPage({goToReading}) {
 
     const handleSearchSubject = (subject) => {
         
-        fetch("http://localhost:3000/searchsubject?q=" + subject)
+        fetch("/searchsubject?q=" + subject)
             .then((response) => response.json())
             .then((data) => setBooks(data))
             .catch((error) => console.log(error));
     }
 
     const handleSearchGeneral = (general) => {
-        fetch("http://localhost:3000/searchgeneral?q=" + general)
+        fetch("/searchgeneral?q=" + general)
             .then((response) => response.json())
             .then((data) => setBooks(data))
             .catch((error) => console.log(error));

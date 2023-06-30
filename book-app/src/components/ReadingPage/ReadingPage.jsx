@@ -4,12 +4,12 @@ function ReadingPage({goToSearch}) {
     const [books, setBooks] = useState([]);
 
     useEffect(() => { //pull reading list, idk if you want to do it once or not
-        fetch("http://localhost:3000/reading-list")
+        fetch("/reading-list")
             .then((response) => response.json())
             .then((data) => setBooks(data));   
     }, []);
     const handleRemoveReading = (book) => {
-        fetch(`http://localhost:3000/reading-list/${book.bookId}`, {
+        fetch(`/reading-list/${book.bookId}`, {
             method: "DELETE",
             })
             .then((response) => {
@@ -20,7 +20,7 @@ function ReadingPage({goToSearch}) {
                 }
             })
             .catch((error) => console.error(error));
-        fetch("http://localhost:3000/reading-list")
+        fetch("/reading-list")
             .then((response) => response.json())
             .then((data) => setBooks(data));  
     }

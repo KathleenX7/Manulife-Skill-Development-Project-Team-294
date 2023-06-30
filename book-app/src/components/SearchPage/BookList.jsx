@@ -7,7 +7,7 @@ const BookList = ({data}) => {
     const [popup, changePopup] = useState(false);
     const [popupData, changePopupData] = useState([]);
     const handleAddReading = (book) => {
-        fetch("http://localhost:3000/reading-list", {
+        fetch("/reading-list", {
             method: "POST",
             headers: {
                 "content-Type": "application/json",
