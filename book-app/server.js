@@ -7,6 +7,8 @@ const PORT = 3000;
 
 app.use(cors());
 
+app.use(express.static('dist'));
+
 // Endpoint for searching books in general
 app.get('/searchgeneral', (req, res) => {
     const searchQuery = req.query.q; // Get the search query from the request query parameters
