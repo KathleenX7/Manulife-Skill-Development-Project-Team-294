@@ -20,6 +20,9 @@ function ReadingPage({goToSearch}) {
                 }
             })
             .catch((error) => console.error(error));
+        fetch("http://localhost:3000/reading-list")
+            .then((response) => response.json())
+            .then((data) => setBooks(data));  
     }
     return(
         <div style = {{textAlign: 'center'}}>

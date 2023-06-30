@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 const Book = ({addToReading, moreInfo, data}) => {
     const [divClass, setClass] = useState("");
     const [makeSmaller, setSmaller] = useState("divBookLarger");
+    const [addButton, setAddButton] = useState("add to reading list");
     useEffect(() => {
         let x = Math.floor((Math.random() * 2) + 1);
         if(x == 1){
@@ -23,6 +24,7 @@ const Book = ({addToReading, moreInfo, data}) => {
     }, []);
     
     const handleAddReading = () => {
+        setAddButton("added");
         addToReading(data);
     }
     const handleMoreInfo = () => {
@@ -45,7 +47,7 @@ const Book = ({addToReading, moreInfo, data}) => {
                 
                 {/* <p>{description}</p> */}
             </div>
-            <button onClick = {handleAddReading}> add to reading list</button>
+            <button onClick = {handleAddReading}> {addButton}</button>
             
         </div>
         </>

@@ -3,11 +3,10 @@ import Book from "./Book";
 import PopupBook from "./PopupBook";
 import PropTypes from "prop-types";
 
-const BookList = ({data, addedBook}) => {
+const BookList = ({data}) => {
     const [popup, changePopup] = useState(false);
     const [popupData, changePopupData] = useState([]);
     const handleAddReading = (book) => {
-        addedBook(book.title);
         fetch("http://localhost:3000/reading-list", {
             method: "POST",
             headers: {
